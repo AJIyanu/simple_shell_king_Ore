@@ -28,6 +28,7 @@ char **split_commands(char *string)
 		char *new_tokens = remove_new_line(tokens);
 
 		words_ptr[i] = malloc(sizeof(char) * (_strlen(new_tokens) + 1));
+		printf("creating %dth address at %p\n", i, words_ptr[i]);
 		if (words_ptr[i] == NULL)
 		{
 			perror("malloc");
@@ -41,6 +42,7 @@ char **split_commands(char *string)
 		if (words_ptr[i])
 		{
 			strcpy(words_ptr[i], new_tokens); /* invalid write size of 1 */
+			printf("%s has been copied successfully\n", words_ptr[i]);
 			tokens = split_token(NULL, delim);
 		}
 		i++;

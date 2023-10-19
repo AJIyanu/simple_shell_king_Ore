@@ -36,10 +36,13 @@ void execute(char **argv, char **env)
 			exit(2);
 		_exit(EXIT_SUCCESS);
 	}
-
+	printf("before abortion 1 Clean\n");
 	cleanup(argv);
-	free(result->cmd_path);
+	printf("before abortion 2 cmd_path\n");
+//	free(result->cmd_path);
+	printf("before abortion 3 result\n");
 	free(result);
+	printf("before abortion 4 waiting\n");
 	wait(&child_pid);
 }
 
@@ -123,6 +126,7 @@ void cleanup(char **argv)
 
 	while (argv[i])
 	{
+		printf("freeing memory %p at %d\n", argv[i], i);
 		free(argv[i]);
 		i++;
 	}
